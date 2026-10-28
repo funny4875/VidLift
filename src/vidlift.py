@@ -50,6 +50,10 @@ class App:
     def __init__(self, root: tk.Tk):
         self.root = root
         root.title("VidLift - 簡報影片匯出工具")
+        assets = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent.parent)) / "assets"
+        icon = assets / "VidLift.ico"
+        if icon.is_file():
+            root.iconbitmap(str(icon))
         root.geometry("650x370")
         root.minsize(550, 320)
         self.source = tk.StringVar()

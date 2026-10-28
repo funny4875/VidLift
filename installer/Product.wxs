@@ -1,7 +1,9 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Name="VidLift" Manufacturer="funny4875" Version="1.1.0" UpgradeCode="BC2C5D19-2D49-4C28-83D1-0604F14DC201" Scope="perUser">
+  <Package Name="VidLift" Manufacturer="funny4875" Version="1.2.0" UpgradeCode="BC2C5D19-2D49-4C28-83D1-0604F14DC201" Scope="perUser">
     <MajorUpgrade DowngradeErrorMessage="已安裝較新版本。" />
     <MediaTemplate EmbedCab="yes" />
+    <Icon Id="AppIcon" SourceFile="$(var.AppIcon)" />
+    <Property Id="ARPPRODUCTICON" Value="AppIcon" />
     <StandardDirectory Id="LocalAppDataFolder">
       <Directory Id="INSTALLFOLDER" Name="VidLift">
         <Component Id="AppComponent" Guid="*">
@@ -12,7 +14,7 @@
     <StandardDirectory Id="ProgramMenuFolder">
       <Directory Id="AppMenuFolder" Name="VidLift">
         <Component Id="MenuShortcut" Guid="*">
-          <Shortcut Id="ApplicationShortcut" Name="VidLift" Target="[INSTALLFOLDER]VidLift.exe" WorkingDirectory="INSTALLFOLDER" />
+          <Shortcut Id="ApplicationShortcut" Name="VidLift" Target="[INSTALLFOLDER]VidLift.exe" WorkingDirectory="INSTALLFOLDER" Icon="AppIcon" />
           <RemoveFolder Id="RemoveAppMenuFolder" On="uninstall" />
           <RegistryValue Root="HKCU" Key="Software\funny4875\VidLift" Name="MenuShortcut" Type="integer" Value="1" KeyPath="yes" />
         </Component>
@@ -20,7 +22,7 @@
     </StandardDirectory>
     <StandardDirectory Id="DesktopFolder">
       <Component Id="DesktopShortcutComponent" Guid="*">
-        <Shortcut Id="DesktopShortcut" Name="VidLift" Target="[INSTALLFOLDER]VidLift.exe" WorkingDirectory="INSTALLFOLDER" />
+        <Shortcut Id="DesktopShortcut" Name="VidLift" Target="[INSTALLFOLDER]VidLift.exe" WorkingDirectory="INSTALLFOLDER" Icon="AppIcon" />
         <RegistryValue Root="HKCU" Key="Software\funny4875\VidLift" Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
       </Component>
     </StandardDirectory>
