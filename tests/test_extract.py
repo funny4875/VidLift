@@ -4,7 +4,7 @@ import tempfile
 import unittest
 import zipfile
 
-MODULE = Path(__file__).resolve().parents[1] / "src" / "pptx_video_extractor.py"
+MODULE = Path(__file__).resolve().parents[1] / "src" / "vidlift.py"
 spec = importlib.util.spec_from_file_location("extractor", MODULE)
 extractor = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(extractor)

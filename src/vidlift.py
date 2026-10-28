@@ -49,7 +49,7 @@ def extract_videos(source: Path, destination: Path, report=lambda message: None)
 class App:
     def __init__(self, root: tk.Tk):
         self.root = root
-        root.title("PPTX 影片匯出工具")
+        root.title("VidLift - 簡報影片匯出工具")
         root.geometry("650x370")
         root.minsize(550, 320)
         self.source = tk.StringVar()

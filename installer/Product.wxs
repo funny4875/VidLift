@@ -1,26 +1,33 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Name="簡報影片匯出工具" Manufacturer="funny4875" Version="1.0.0" UpgradeCode="BC2C5D19-2D49-4C28-83D1-0604F14DC201" Scope="perUser">
+  <Package Name="VidLift" Manufacturer="funny4875" Version="1.1.0" UpgradeCode="BC2C5D19-2D49-4C28-83D1-0604F14DC201" Scope="perUser">
     <MajorUpgrade DowngradeErrorMessage="已安裝較新版本。" />
     <MediaTemplate EmbedCab="yes" />
     <StandardDirectory Id="LocalAppDataFolder">
-      <Directory Id="INSTALLFOLDER" Name="簡報影片匯出工具">
+      <Directory Id="INSTALLFOLDER" Name="VidLift">
         <Component Id="AppComponent" Guid="*">
-          <File Id="AppExe" Source="$(var.AppExe)" Name="簡報影片匯出工具.exe" KeyPath="yes" />
+          <File Id="AppExe" Source="$(var.AppExe)" Name="VidLift.exe" KeyPath="yes" />
         </Component>
       </Directory>
     </StandardDirectory>
     <StandardDirectory Id="ProgramMenuFolder">
-      <Directory Id="AppMenuFolder" Name="簡報影片匯出工具">
+      <Directory Id="AppMenuFolder" Name="VidLift">
         <Component Id="MenuShortcut" Guid="*">
-          <Shortcut Id="ApplicationShortcut" Name="簡報影片匯出工具" Target="[INSTALLFOLDER]簡報影片匯出工具.exe" WorkingDirectory="INSTALLFOLDER" />
+          <Shortcut Id="ApplicationShortcut" Name="VidLift" Target="[INSTALLFOLDER]VidLift.exe" WorkingDirectory="INSTALLFOLDER" />
           <RemoveFolder Id="RemoveAppMenuFolder" On="uninstall" />
-          <RegistryValue Root="HKCU" Key="Software\funny4875\PptxVideoExtractor" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+          <RegistryValue Root="HKCU" Key="Software\funny4875\VidLift" Name="MenuShortcut" Type="integer" Value="1" KeyPath="yes" />
         </Component>
       </Directory>
     </StandardDirectory>
-    <Feature Id="MainFeature" Title="簡報影片匯出工具" Level="1">
+    <StandardDirectory Id="DesktopFolder">
+      <Component Id="DesktopShortcutComponent" Guid="*">
+        <Shortcut Id="DesktopShortcut" Name="VidLift" Target="[INSTALLFOLDER]VidLift.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKCU" Key="Software\funny4875\VidLift" Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+    <Feature Id="MainFeature" Title="VidLift" Level="1">
       <ComponentRef Id="AppComponent" />
       <ComponentRef Id="MenuShortcut" />
+      <ComponentRef Id="DesktopShortcutComponent" />
     </Feature>
   </Package>
 </Wix>
