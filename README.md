@@ -1,5 +1,7 @@
 # VidLift
 
+<img src="assets/VidLift.png" alt="VidLift 圖示" width="160">
+
 從 PPTX 簡報匯出內嵌影片，保留原始內容，不重新編碼。
 
 ## 安裝和使用
